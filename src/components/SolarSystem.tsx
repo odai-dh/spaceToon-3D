@@ -47,7 +47,7 @@ export default function App() {
             rotation="0 90 0"
             scale="0.01 0.01 0.01"
           ></a-entity>
-          
+
           {/* Camera inside the cockpit */}
           <a-entity
             camera
@@ -56,6 +56,12 @@ export default function App() {
             position="0 0.1 0"
           ></a-entity>
         </a-entity>
+
+        {/* VR controllers and teleport */}
+        <a-entity laser-controls="hand: left"></a-entity>
+        <a-entity laser-controls="hand: right"></a-entity>
+        <a-entity teleport-controls="cameraRig: #spaceship; teleportOrigin: #spaceship; button: trigger;"></a-entity>
+
 
 
         {/* Lights */}
