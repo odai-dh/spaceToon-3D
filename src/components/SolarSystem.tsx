@@ -52,7 +52,7 @@ export default function App() {
           <a-entity
             camera
             look-controls
-            wasd-controls="acceleration: 10"
+            wasd-controls="acceleration: 100"
             position="0 0.1 0"
           ></a-entity>
         </a-entity>
