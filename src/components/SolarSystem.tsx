@@ -60,10 +60,10 @@ export default function App() {
             <a-entity
               id='cockpit'
               gltf-model="/models/cockpit.glb"
-              position="0 -0.07 0.25"
+              position="0 -0.35 1.2"
               rotation="0 90 0"
-              scale="0.02 0.02 0.015"
-              static-body
+              scale="0.1 0.1 0.1"
+              visible="true"
             ></a-entity>
           </a-entity>
         </a-entity>
