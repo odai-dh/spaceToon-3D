@@ -42,15 +42,14 @@ export default function App() {
         {/* Camera rig containing cockpit and camera */}
         <a-entity
           id="cameraRig"
-          position="0 1 20"
+          position="0 1 19.5"
         >
-          {/* Cockpit model */}
-
-
           {/* Camera inside the cockpit */}
           <a-entity
+            id='camera'
             camera
-            position="0 0.17 0.18"
+            universal-camera
+            look-controls="pointerLockEnabled: true"
           >
             <a-entity
               geometry="primitive: plane; height: 1; width: 1.5"
@@ -59,10 +58,11 @@ export default function App() {
               rotation="0 0 0"
             ></a-entity>
             <a-entity
+              id='cockpit'
               gltf-model="/models/cockpit.glb"
               position="0 -0.07 0.25"
               rotation="0 90 0"
-              scale="0.02 0.02 0.02"
+              scale="0.02 0.02 0.015"
               static-body
             ></a-entity>
           </a-entity>
