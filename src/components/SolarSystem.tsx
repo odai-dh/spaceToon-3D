@@ -45,21 +45,26 @@ export default function App() {
           position="0 1 20"
         >
           {/* Cockpit model */}
-          
+
 
           {/* Camera inside the cockpit */}
           <a-entity
             camera
-            look-controls
             position="0 0.17 0.18"
           >
             <a-entity
-            gltf-model="/models/cockpit.glb"
-            position="0 -0.2 -0.17"
-            rotation="0 90 0"
-            scale="0.01 0.01 0.01"
-            static-body
-          ></a-entity>
+              geometry="primitive: plane; height: 1; width: 1.5"
+              material="color: #99ccff; transparent: true; opacity: 0.08; side: double"
+              position="0 0 -0.4"
+              rotation="0 0 0"
+            ></a-entity>
+            <a-entity
+              gltf-model="/models/cockpit.glb"
+              position="0 -0.07 0.25"
+              rotation="0 90 0"
+              scale="0.02 0.02 0.02"
+              static-body
+            ></a-entity>
           </a-entity>
         </a-entity>
 
