@@ -49,7 +49,6 @@ export default function App() {
             id='camera'
             camera
             universal-camera
-            look-controls="pointerLockEnabled: true"
           >
             <a-entity
               geometry="primitive: plane; height: 1; width: 1.5"
