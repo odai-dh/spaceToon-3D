@@ -63,7 +63,12 @@ export default function App() {
         {/* VR controllers and teleport */}
 
         <a-entity oculus-touch-controls="hand: left" thumbstick-move="rig: #cameraRig"></a-entity>
-        <a-entity oculus-touch-controls="hand: right" thumbstick-move="rig: #cameraRig"></a-entity>
+        <a-entity
+          oculus-touch-controls="hand: right"
+          thumbstick-rotate="rig: #cameraRig"
+        >
+
+        </a-entity>
 
         {/* Lights */}
         <a-entity light="type: ambient; color: #fff; intensity: 0.5"></a-entity>
