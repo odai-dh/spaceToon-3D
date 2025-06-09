@@ -1,10 +1,40 @@
 AFRAME.registerComponent('thumbstick-move', {
-  schema: { rig: {type: 'selector'}, speed: {type: 'number', default: 0.05} },
+  schema: { rig: {type: 'selector'}, speed: {type: 'number', default: 0.01} },
   init: function () {
     this.direction = {x: 0, y: 0};
+    this.normalSpeed = this.data.speed;
+    this.boostSpeed = this.data.speed * 3;
+
     this.el.addEventListener('thumbstickmoved', (evt) => {
       this.direction.x = evt.detail.x;
       this.direction.y = evt.detail.y;
+    });
+
+    this.el.addEventListener('triggerdown', () => {
+      this.data.speed = this.boostSpeed;
+      const scene = document.querySelector('a-scene');
+      if (scene) {
+        scene.setAttribute('background', 'color: #222');
+        if (!scene.querySelector('#boost-light')) {
+          const boostLight = document.createElement('a-entity');
+          boostLight.setAttribute('id', 'boost-light');
+          boostLight.setAttribute('light', 'type: point; color: #0ff; intensity: 2; distance: 10');
+          boostLight.setAttribute('position', '0 2 0');
+          scene.appendChild(boostLight);
+        }
+      }
+    });
+
+    this.el.addEventListener('triggerup', () => {
+      this.data.speed = this.normalSpeed;
+      const scene = document.querySelector('a-scene');
+      if (scene) {
+        scene.setAttribute('background', 'color: #000');
+        const boostLight = scene.querySelector('#boost-light');
+        if (boostLight) {
+          scene.removeChild(boostLight);
+        }
+      }
     });
   },
   tick: function () {
@@ -30,27 +60,36 @@ AFRAME.registerComponent('thumbstick-move', {
   }
 });
 AFRAME.registerComponent('thumbstick-rotate', {
-  schema: { rig: {type: 'selector'}, speed: {type: 'number', default: 0.5} },
+  schema: {
+    rig: { type: 'selector' },
+    speed: { type: 'number', default: 0.5 },
+    rollSpeed: { type: 'number', default: 0.03 }
+  },
   init: function () {
     this.rotationInput = {x: 0, y: 0};
+    this.roll = 0;
     this.el.addEventListener('thumbstickmoved', (evt) => {
       this.rotationInput.x = evt.detail.x;
       this.rotationInput.y = evt.detail.y;
     });
+    this.el.addEventListener('abuttondown', () => this.roll = -1);
+    this.el.addEventListener('abuttonup', () => this.roll = 0);
+    this.el.addEventListener('bbuttondown', () => this.roll = 1);
+    this.el.addEventListener('bbuttonup', () => this.roll = 0);
   },
   tick: function () {
     if (!this.data.rig) return;
     const rigObj = this.data.rig.object3D;
 
-    if (Math.abs(this.rotationInput.x) > 0.05 || Math.abs(this.rotationInput.y) > 0.05) {
-      const euler = new THREE.Euler(
-        -this.rotationInput.y * 0.01 * this.data.speed, // pitch (X)
-        -this.rotationInput.x * 0.01 * this.data.speed, // yaw (Y)
-        0,
+    if (Math.abs(this.rotationInput.x) > 0.05 || Math.abs(this.rotationInput.y) > 0.05 || this.roll !== 0) {
+      const deltaEuler = new THREE.Euler(
+        -this.rotationInput.y * 0.01 * this.data.speed, // pitch
+        -this.rotationInput.x * 0.01 * this.data.speed, // yaw
+        this.roll * this.data.rollSpeed, // Z-axis roll
         'YXZ'
       );
-      rigObj.rotation.x += euler.x;
-      rigObj.rotation.y += euler.y;
+      const deltaQuat = new THREE.Quaternion().setFromEuler(deltaEuler);
+      rigObj.quaternion.multiplyQuaternions(deltaQuat, rigObj.quaternion);
     }
   }
 });

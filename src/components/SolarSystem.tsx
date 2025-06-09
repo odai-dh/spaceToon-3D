@@ -45,19 +45,22 @@ export default function App() {
           position="0 1 20"
         >
           {/* Cockpit model */}
-          <a-entity
-            gltf-model="/models/cockpit.glb"
-            position="0 0 0"
-            rotation="0 90 0"
-            scale="0.01 0.01 0.01"
-          ></a-entity>
+          
 
           {/* Camera inside the cockpit */}
           <a-entity
             camera
             look-controls
             position="0 0.17 0.18"
+          >
+            <a-entity
+            gltf-model="/models/cockpit.glb"
+            position="0 -0.2 -0.17"
+            rotation="0 90 0"
+            scale="0.01 0.01 0.01"
+            static-body
           ></a-entity>
+          </a-entity>
         </a-entity>
 
         {/* VR controllers and teleport */}
@@ -66,9 +69,7 @@ export default function App() {
         <a-entity
           oculus-touch-controls="hand: right"
           thumbstick-rotate="rig: #cameraRig"
-        >
-
-        </a-entity>
+        ></a-entity>
 
         {/* Lights */}
         <a-entity light="type: ambient; color: #fff; intensity: 0.5"></a-entity>
