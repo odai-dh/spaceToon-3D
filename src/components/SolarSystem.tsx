@@ -3,6 +3,7 @@ import Planet from './Planet';
 import Orbit from './Orbit';
 import Header from './Header';
 import planets from './planetsData';
+import '../../public/js/thumbstick-move.js';
 
 export default function App() {
   return (
@@ -42,9 +43,6 @@ export default function App() {
         <a-entity
           id="cameraRig"
           position="0 1 20"
-          universal-controls
-          gamepad-controls="fly: true; movementEnabled: true; rotationEnabled: true"
-          wasd-controls="acceleration: 10"
         >
           {/* Cockpit model */}
           <a-entity
@@ -58,15 +56,14 @@ export default function App() {
           <a-entity
             camera
             look-controls
-            position="0 0.1 0"
+            position="0 0.17 0.18"
           ></a-entity>
         </a-entity>
 
         {/* VR controllers and teleport */}
-        <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
-        <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ccccff"></a-entity>
-        <a-entity teleport-controls="cameraRig: #cameraRig; teleportOrigin: #cameraRig; button: trigger;"></a-entity>
 
+        <a-entity oculus-touch-controls="hand: left" thumbstick-move="rig: #cameraRig"></a-entity>
+        <a-entity oculus-touch-controls="hand: right" thumbstick-move="rig: #cameraRig"></a-entity>
 
         {/* Lights */}
         <a-entity light="type: ambient; color: #fff; intensity: 0.5"></a-entity>

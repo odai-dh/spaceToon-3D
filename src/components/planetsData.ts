@@ -7,6 +7,7 @@ const planets = [
     position: '0 1.25 0',
     scale: '0.5 0.5 0.5',
     rotationDuration: 9000,
+    description: 'Mercury is the smallest planet and closest to the Sun.'
   },
   {
     id: 'venus',
@@ -16,6 +17,7 @@ const planets = [
     position: '0 1.25 0',
     scale: '0.6 0.6 0.6',
     rotationDuration: 9500,
+    description: 'Venus is the hottest planet and has a thick toxic atmosphere.'
   },
   {
     id: 'earth',
@@ -25,6 +27,7 @@ const planets = [
     position: '0 1.598 0',
     scale: '0.6 0.6 0.6',
     rotationDuration: 10000,
+    description: 'Earth is our home planet and the only known planet to support life.'
   },
   {
     id: 'mars',
@@ -34,6 +37,7 @@ const planets = [
     position: '0 1.868 0',
     scale: '0.005 0.005 0.005',
     rotationDuration: 8000,
+    description: 'Mars is known as the Red Planet and is a target for future human missions.'
   },
   {
     id: 'jupiter',
@@ -43,6 +47,7 @@ const planets = [
     position: '0 2.085 0',
     scale: '1 1 1',
     rotationDuration: 12000,
+    description: 'Jupiter is the largest planet with a famous Great Red Spot storm.'
   },
   {
     id: 'saturn',
@@ -52,6 +57,7 @@ const planets = [
     position: '0 2.558 0',
     scale: '0.01 0.01 0.01',
     rotationDuration: 15000,
+    description: 'Saturn is known for its extensive and beautiful ring system.'
   },
   {
     id: 'uranus',
@@ -61,6 +67,7 @@ const planets = [
     position: '0 1.992 0',
     scale: '0.7 0.7 0.7',
     rotationDuration: 16000,
+    description: 'Uranus is an ice giant with a tilted axis causing extreme seasons.'
   },
   {
     id: 'neptune',
@@ -70,6 +77,7 @@ const planets = [
     position: '0 3.144 0',
     scale: '0.0071 0.0071 0.0071',
     rotationDuration: 17000,
+    description: 'Neptune is a cold ice giant and the farthest planet from the Sun.'
   },
 ];
 

@@ -6,6 +6,7 @@ interface PlanetProps {
   position: string;
   scale: string;
   rotationDuration?: number;
+  className?: string;
 }
 
 export default function Planet({
@@ -13,6 +14,7 @@ export default function Planet({
   model,
   position,
   scale,
+  className,
 }: PlanetProps) {
   return (
     <a-entity
@@ -20,6 +22,7 @@ export default function Planet({
       gltf-model={model}
       position={position}
       scale={scale}
+      className={className}
     ></a-entity>
   );
 }

@@ -62,6 +62,16 @@ declare global {
         shadow?: string | object;
         [key: string]: any 
       }, HTMLElement>;
+      'a-plane': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
+        position?: string;
+        width?: number | string;
+        height?: number | string;
+        color?: string;
+        rotation?: string;
+        material?: string | object;
+        shadow?: string | object;
+        [key: string]: any;
+      }, HTMLElement>;
       'a-animation': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { 
         attribute?: string; 
         dur?: string | number; 
